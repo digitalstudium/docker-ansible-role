@@ -1,0 +1,13 @@
+rpm_packages:
+- https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-18.09.3-3.el7.x86_64.rpm
+- https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-cli-18.09.3-3.el7.x86_64.rpm
+- https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.4-3.1.el7.x86_64.rpm
+yum_packages:
+- docker-ce
+- docker-ce-cli
+- containerd.io
+install_from_rpms: "no"
+pre_packages:
+- yum-utils
+- device-mapper-persistent-data
+- lvm2

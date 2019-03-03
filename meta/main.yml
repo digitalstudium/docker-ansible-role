@@ -1,0 +1,13 @@
+galaxy_info:
+  author: Costel Shutkin
+  description: Role for installing docker and docker-compose on CentOS
+
+  license: license (GPLv3)
+
+  min_ansible_version: 2.7
+
+  platforms:
+  - name: CentOS
+    versions:
+    - 7.x
+

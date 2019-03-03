@@ -1,0 +1,8 @@
+- name: Enable and start services
+  systemd:
+    state: started
+    enabled: yes
+    name: "{{ item }}"
+  loop:
+    - containerd
+    - docker

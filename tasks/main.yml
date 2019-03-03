@@ -1,0 +1,38 @@
+---
+- name: Install prerequisites
+  yum:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ pre_packages }}"
+
+- name: Install stable docker repo
+  command: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+- name: Install docker and its dependencies from .rpm files
+  yum:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ rpm_packages }}"
+  when: install_from_rpms == "yes"
+  notify: Enable and start services
+
+- name: Install docker and its dependencies from yum repo
+  yum:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ yum_packages }}"
+  when: install_from_rpms == "no"
+  notify: Enable and start services
+
+- name: Download docker-compose
+  get_url:
+    url: https://github.com/docker/compose/releases/download/1.23.2/docker-compose-Linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    mode: 0755
+
+- name: Create symlink for docker-compose 
+  file:
+    src: /usr/local/bin/docker-compose
+    dest: /usr/bin/docker-compose
+    state: link
+
