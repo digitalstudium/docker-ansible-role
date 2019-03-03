@@ -26,6 +26,10 @@ Example Playbook
   roles:
     - docker-ansible-role
 ```
+Troubleshooting
+---------------
+
+You could create an issue for this repository
 
 License
 -------
