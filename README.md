@@ -1,4 +1,4 @@
-Role Name
+docker-ansible-role
 =========
 
 This role installs docker and docker-compose on Centos
